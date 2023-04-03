@@ -1,0 +1,26 @@
+.signup {
+  height: 100vh;
+}
+
+.autosingup .btn {
+  width: 350px;
+  height: 75px;
+  cursor: pointer;
+}
+
+.autosingup .btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.google {
+  background-color: rgba(255, 0, 0, 0.518);
+}
+
+.facebook {
+  background-color: #4267b2;
+}
+
+.github {
+  background-color: black;
+}
