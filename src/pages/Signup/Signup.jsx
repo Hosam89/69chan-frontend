@@ -14,12 +14,12 @@ const Signup = () => {
         <Col>
           <Form className="mt-5">
             <Stack gap={4}>
-              <Form.Group controlId="fName">
-                <Form.Label>First Name:</Form.Label>
-                <Form.Control placeholder="First Name" />
+              <Form.Group controlId="username">
+                <Form.Label> User name:</Form.Label>
+                <Form.Control placeholder="Last Name" variant="text" />
               </Form.Group>
-              <Form.Group controlId="lname">
-                <Form.Label>Last Name:</Form.Label>
+              <Form.Group controlId="name">
+                <Form.Label>name:</Form.Label>
                 <Form.Control placeholder="Last Name" variant="text" />
               </Form.Group>
               <Form.Group controlId="email">
@@ -35,8 +35,8 @@ const Signup = () => {
                 <Form.Control placeholder="Repeat Password" />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Email:</Form.Label>
-                <Form.Control placeholder="Email" />
+                <Form.Label>Photo:</Form.Label>
+                <Form.Control placeholder="photo" type="file" />
               </Form.Group>
             </Stack>
             <Stack
