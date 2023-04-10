@@ -1,9 +1,11 @@
 import React from "react";
-import { Container, Form, Stack } from "react-bootstrap";
+import { Button, Container, Form, Stack } from "react-bootstrap";
+
+import "./Login.css";
 
 const Login = () => {
   return (
-    <Container className="mt-5">
+    <Container className="mt-5 login">
       <h2>Login</h2>
       <Form>
         <Stack gap={2}>
@@ -16,6 +18,9 @@ const Login = () => {
             <Form.Control placeholder="password" type="password" />
           </Form.Group>
         </Stack>
+        <Button variant="primary" className="mt-5">
+          Login
+        </Button>
       </Form>
     </Container>
   );

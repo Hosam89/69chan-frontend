@@ -1,56 +1,34 @@
 // import { createContext, useReducer } from "react";
-// import { useCookie } from "../hooks/useCookies";
-// import useLogin from "../hooks/uselogin";
-// import useLogout from "../hooks/useLogout";
 
 // export const AuthContext = createContext();
 
 // export const authReducer = (state, action) => {
 //   switch (action.type) {
+//     //User is trying to log in
 //     case "LOGIN":
-//       return { ...state, user: action.payload, error: "" };
-
+//       return { ...state, user: action.payload };
+//     //User is logged out
 //     case "LOGOUT":
-//       return { ...state, user: null, error: "" };
-
+//       return { ...state, user: null };
+//     // User is logged in
 //     case "AUTH_IS_READY":
-//       return { user: action.payload, authIsReady: true, error: "" };
-
-//     case "SET_ERROR":
-//       return { ...state, error: action.payload };
-
+//       return { user: action.payload, authIsReady: true };
 //     default:
 //       return state;
 //   }
 // };
 
 // export const AuthContextProvider = ({ children }) => {
-//   const [token, setToken] = useCookie("userToken");
+//   //useReducer initial state
 //   const [state, dispatch] = useReducer(authReducer, {
+//     //User info Object
 //     user: null,
 //     authIsReady: false,
-//     error: "",
 //   });
 
-//   const { handleLogin, email, setEmail, password, setPassword, error } =
-//     useLogin(dispatch);
-//   const { handleLogout } = useLogout(dispatch);
-
 //   return (
-//     <AuthContext.Provider
-//       value={{
-//         ...state,
-//         dispatch,
-//         handleLogin,
-//         email,
-//         setEmail,
-//         password,
-//         setPassword,
-//         error,
-//         handleLogout,
-//         token,
-//       }}
-//     >
+//     // Provider for the context so we can have a global contaxt provider
+//     <AuthContext.Provider value={{ ...state, dispatch }}>
 //       {children}
 //     </AuthContext.Provider>
 //   );

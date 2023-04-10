@@ -1,43 +1,145 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Form, Stack } from "react-bootstrap";
 import { BsGoogle } from "react-icons/bs";
 import { AiFillFacebook } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
+
 import "./Signup.css";
-import { Link } from "react-router-dom";
 
 const Signup = () => {
+  //User state Data
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [profilePictureError, setProfilePictureError] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const { postData, data } = useFetch(
+    "http://localhost:3001/users/signup",
+    "POST"
+  );
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    postData({
+      email,
+      password,
+      name,
+      username,
+      profilePicture,
+    });
+    // try {
+    //   const response = await fetch("http://localhost:3001/users/signup", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       email,
+    //       password,
+    //       name,
+    //       username,
+    //       profilePicture,
+    //     }),
+    //   });
+    // } catch (error) {
+    //   setError(error);
+    // }
+  };
+
+  /** A function to check the type the size of the user Pic */
+  const handleFileChange = (e) => {
+    /** A clean up to the input type file so it will only take the last file we upload */
+    setProfilePicture(null);
+
+    let selected = e.target.files[0];
+    console.log(selected);
+    if (!selected) {
+      setProfilePictureError("Please select an image file");
+      return;
+    }
+    /** To check if the file uploaded is an Image or not */
+    if (!selected.type.includes("image")) {
+      setProfilePictureError("The File must be an image");
+      return;
+    }
+    /** To check to file size */
+    if (selected.size > 900000) {
+      setProfilePictureError("Image file must be less than 100kb");
+      return;
+    }
+    setProfilePictureError(null);
+    setProfilePicture(selected);
+    console.log("thumbnail updated");
+  };
+
   return (
     <Container className="pt-5">
       <h2 className="text-center">Sign Up</h2>
       <Stack className="pt-5" gap={5} direction="horizontal">
         <Col>
-          <Form className="mt-5">
+          <Form className="mt-5" onSubmit={(e) => handleSubmit(e)}>
             <Stack gap={4}>
               <Form.Group controlId="username">
                 <Form.Label> User name:</Form.Label>
-                <Form.Control placeholder="Last Name" variant="text" />
+                <Form.Control
+                  placeholder="User Name"
+                  variant="text"
+                  required
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </Form.Group>
               <Form.Group controlId="name">
                 <Form.Label>name:</Form.Label>
-                <Form.Control placeholder="Last Name" variant="text" />
+                <Form.Control
+                  placeholder="Full Name"
+                  variant="text"
+                  required
+                  onChange={(e) => setName(e.target.value)}
+                />
               </Form.Group>
               <Form.Group controlId="email">
                 <Form.Label>Email:</Form.Label>
-                <Form.Control placeholder="Email" type="email" />
+                <Form.Control
+                  placeholder="Email"
+                  type="email"
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </Form.Group>
               <Form.Group controlId="password">
                 <Form.Label>Password:</Form.Label>
-                <Form.Control placeholder="password" type="password" />
+                <Form.Control
+                  placeholder="password"
+                  type="password"
+                  required
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </Form.Group>
               <Form.Group controlId="repeatpass">
                 <Form.Label>Repeat Password:</Form.Label>
-                <Form.Control placeholder="Repeat Password" />
+                <Form.Control
+                  placeholder="Repeat Password"
+                  type="password"
+                  required
+                  onChange={(e) => setRepeatPassword(e.target.value)}
+                />
               </Form.Group>
-              <Form.Group>
+              {/* <Form.Group>
                 <Form.Label>Photo:</Form.Label>
-                <Form.Control placeholder="photo" type="file" />
-              </Form.Group>
+                <Form.Control
+                  placeholder="photo"
+                  type="file"
+                  required
+                  onChange={handleFileChange}
+                />
+              </Form.Group> */}
+              <input type="file" onChange={handleFileChange} />
             </Stack>
             <Stack
               gap={2}
@@ -49,6 +151,8 @@ const Signup = () => {
                 <Button variant="outline-secondary">Login</Button>
               </Link>
             </Stack>
+            {error && <div>{error}</div>}
+            {profilePictureError && <div>{profilePictureError}</div>}
           </Form>
         </Col>
         <Col className="pt-5 autosingup d-flex ">
