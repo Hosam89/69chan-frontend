@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
+import { useAuthContext } from "./useAuthContext";
 
-export const useFetch = (url, method = "GET") => {
+export const useFetch = (url, method = "GET", dispatchOps) => {
   const [data, setData] = useState();
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
   const [options, setOptions] = useState(null);
+  const { dispatch } = useAuthContext();
 
   const postData = (postData) => {
+    const formData = new FormData();
+    for (const key in postData) {
+      formData.append(key, postData[key]);
+    }
     setOptions({
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
+      body: formData,
     });
   };
 
@@ -30,8 +33,11 @@ export const useFetch = (url, method = "GET") => {
         if (!res.ok) {
           throw new Error(res.statusText);
         }
-        const data = await res.json();
 
+        const data = await res.json();
+        if (dispatchOps === "LOGIN") {
+          dispatch({ type: "LOGIN", payload: data });
+        }
         setIsPending(false);
         setData(data);
         setError(null);
@@ -56,7 +62,7 @@ export const useFetch = (url, method = "GET") => {
     return () => {
       controller.abort();
     };
-  }, [url, method, options]);
+  }, [url, method, options, dispatchOps]);
 
   return { data, isPending, error, postData };
 };

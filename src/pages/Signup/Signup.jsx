@@ -17,39 +17,32 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
   const [profilePictureError, setProfilePictureError] = useState("");
-  const [error, setError] = useState(null);
+  const [err, setErr] = useState("");
   const navigate = useNavigate();
-  const { postData, data } = useFetch(
-    "http://localhost:3001/users/signup",
-    "POST"
+  const { postData, error } = useFetch(
+    "http://localhost:3001/users/add",
+    "POST",
+    "LOGIN"
   );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    postData({
+    const user = {
       email,
       password,
       name,
       username,
       profilePicture,
-    });
-    // try {
-    //   const response = await fetch("http://localhost:3001/users/signup", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       email,
-    //       password,
-    //       name,
-    //       username,
-    //       profilePicture,
-    //     }),
-    //   });
-    // } catch (error) {
-    //   setError(error);
-    // }
+    };
+    if (password !== repeatPassword) {
+      setErr("Password dose not match");
+    } else {
+      postData(user);
+
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    }
   };
 
   /** A function to check the type the size of the user Pic */
@@ -58,7 +51,7 @@ const Signup = () => {
     setProfilePicture(null);
 
     let selected = e.target.files[0];
-    console.log(selected);
+
     if (!selected) {
       setProfilePictureError("Please select an image file");
       return;
@@ -80,7 +73,7 @@ const Signup = () => {
 
   return (
     <Container className="pt-5">
-      <h2 className="text-center">Sign Up</h2>
+      <h2 className="text-center">Sign Up to Socialize</h2>
       <Stack className="pt-5" gap={5} direction="horizontal">
         <Col>
           <Form className="mt-5" onSubmit={(e) => handleSubmit(e)}>
@@ -130,7 +123,7 @@ const Signup = () => {
                   onChange={(e) => setRepeatPassword(e.target.value)}
                 />
               </Form.Group>
-              {/* <Form.Group>
+              <Form.Group>
                 <Form.Label>Photo:</Form.Label>
                 <Form.Control
                   placeholder="photo"
@@ -138,8 +131,7 @@ const Signup = () => {
                   required
                   onChange={handleFileChange}
                 />
-              </Form.Group> */}
-              <input type="file" onChange={handleFileChange} />
+              </Form.Group>
             </Stack>
             <Stack
               gap={2}
@@ -151,7 +143,7 @@ const Signup = () => {
                 <Button variant="outline-secondary">Login</Button>
               </Link>
             </Stack>
-            {error && <div>{error}</div>}
+            {err && <div>{err}</div>}
             {profilePictureError && <div>{profilePictureError}</div>}
           </Form>
         </Col>
