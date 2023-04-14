@@ -1,14 +1,8 @@
-import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-// import { Posts } from "../../components";
+import { useFetch } from "../../hooks/useFetch";
 const Home = () => {
-  return (
-    <div>
-      {/* <Routes>
-        <Route path="/posts" element={<Posts />} />
-      </Routes> */}
-    </div>
-  );
+  const { data, isPending, error } = useFetch("http://localhost:3001/posts");
+  console.log(data);
+  return <div></div>;
 };
 
 export default Home;
