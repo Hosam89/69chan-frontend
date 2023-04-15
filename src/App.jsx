@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Home, Login, Signup } from "./pages/index";
+import { Home, Login, Post, Signup } from "./pages/index";
 import { Footer, Navbar } from "./components/index";
 import { useAuthContext } from "./hooks/useAuthContext";
 
@@ -15,6 +15,10 @@ function App() {
         <Route
           path="/"
           element={user ? <Home /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/post/:id"
+          element={user ? <Post /> : <Navigate to={"/login"} />}
         />
 
         <Route
