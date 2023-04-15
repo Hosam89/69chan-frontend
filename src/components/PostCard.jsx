@@ -1,8 +1,7 @@
 import { Card, Button } from "react-bootstrap";
-import { useFetch } from "../hooks/useFetch";
+
 import "./PostCard.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const PostCard = ({ imageUrl, title, description, postId }) => {
   return (
