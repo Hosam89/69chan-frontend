@@ -153,14 +153,14 @@ const Signup = () => {
             direction="vertical"
             className="d-flex justify-content-center align-items-center"
           >
-            <Button className="btn google">
+            <Button className="btn btn-primary google">
               <BsGoogle /> Google
             </Button>
-            <Button className="btn facebook">
+            <Button className="btn btn-secondary facebook">
               {" "}
               <AiFillFacebook /> Face Book
             </Button>
-            <Button className="btn github">
+            <Button className="btn btn-success github">
               {" "}
               <FaGithub /> Github
             </Button>
