@@ -8,13 +8,18 @@
   cursor: pointer;
 }
 
+.btn {
+  outline: none;
+  border: none;
+}
+
 .autosingup .btn:hover {
   background-color: white;
   color: black;
 }
 
 .google {
-  background-color: rgba(255, 0, 0, 0.518);
+  background-color: #ff0000;
 }
 
 .facebook {
@@ -22,5 +27,5 @@
 }
 
 .github {
-  background-color: black;
+  background-color: #000000;
 }
