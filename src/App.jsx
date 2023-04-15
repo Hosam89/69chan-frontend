@@ -9,7 +9,7 @@ function App() {
   const { user } = useAuthContext();
 
   return (
-    <div className="App d-flex flex-column">
+    <div className="App">
       {user && <Navbar />}
       <Routes>
         <Route
