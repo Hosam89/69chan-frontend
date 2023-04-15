@@ -72,7 +72,7 @@ const Signup = () => {
   };
 
   return (
-    <Container className="pt-5">
+    <Container className="pt-5 signup">
       <h2 className="text-center">Sign Up to Socialize</h2>
       <Stack className="pt-5" gap={5} direction="horizontal">
         <Col>
