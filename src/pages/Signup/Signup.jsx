@@ -5,6 +5,7 @@ import { AiFillFacebook } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
+import Footer from "../../components/Footer";
 
 import "./Signup.css";
 
@@ -72,14 +73,14 @@ const Signup = () => {
   };
 
   return (
-    <Container className="pt-5 signup">
+    <Container className="pt-5">
       <h2 className="text-center">Sign Up to Socialize</h2>
       <Stack className="pt-5" gap={5} direction="horizontal">
         <Col>
           <Form className="mt-5" onSubmit={(e) => handleSubmit(e)}>
             <Stack gap={4}>
               <Form.Group controlId="username">
-                <Form.Label> User name:</Form.Label>
+                <Form.Label> Username:</Form.Label>
                 <Form.Control
                   placeholder="User Name"
                   variant="text"
@@ -88,7 +89,7 @@ const Signup = () => {
                 />
               </Form.Group>
               <Form.Group controlId="name">
-                <Form.Label>name:</Form.Label>
+                <Form.Label>Name:</Form.Label>
                 <Form.Control
                   placeholder="Full Name"
                   variant="text"
@@ -138,9 +139,13 @@ const Signup = () => {
               direction="horizontal"
               className="justify-content-end mt-4"
             >
-              <Button type="submit">Signup</Button>
+              <Button className="btn btn-info" type="submit">
+                Signup
+              </Button>
               <Link to="/login">
-                <Button variant="outline-secondary">Login</Button>
+                <Button variant="outline-secondary btn btn-success">
+                  Go to login
+                </Button>
               </Link>
             </Stack>
             {err && <div>{err}</div>}
@@ -153,20 +158,21 @@ const Signup = () => {
             direction="vertical"
             className="d-flex justify-content-center align-items-center"
           >
-            <Button className="btn btn-primary google">
+            <Button className="btn btn-primary google block">
               <BsGoogle /> Google
             </Button>
-            <Button className="btn btn-secondary facebook">
+            <Button className="btn btn-secondary facebook block">
               {" "}
-              <AiFillFacebook /> Face Book
+              <AiFillFacebook /> Facebook
             </Button>
-            <Button className="btn btn-success github">
+            <Button className="btn btn-success github block">
               {" "}
               <FaGithub /> Github
             </Button>
           </Stack>
         </Col>
       </Stack>
+      <Footer />
     </Container>
   );
 };
