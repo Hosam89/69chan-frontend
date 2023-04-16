@@ -4,3 +4,8 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.header {
+  color: hotpink;
+  margin-bottom: 20px;
+}

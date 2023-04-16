@@ -3,6 +3,7 @@ import { Button, Container, Form, Stack } from "react-bootstrap";
 import { useFetch } from "../../hooks/useFetch";
 import { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import Footer from "../../components/Footer";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
@@ -42,7 +43,7 @@ const Login = () => {
   };
   return (
     <Container className="mt-5 login">
-      <h2>Login to Socialize</h2>
+      <h2 className="header">Login to MemeJewels</h2>
       <Form onSubmit={(e) => handleLogIn(e)}>
         <Stack gap={2}>
           <Form.Group controlId="username">
@@ -62,11 +63,12 @@ const Login = () => {
             />
           </Form.Group>
         </Stack>
-        <Button variant="primary" className="mt-5" type="submit">
+        <Button variant="primary" className="mt-5 btn btn-info" type="submit">
           Login
         </Button>
       </Form>
       {err && <div>{err.message}</div>}
+      <Footer />
     </Container>
   );
 };
