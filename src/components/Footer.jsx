@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 const Footer = () => {
   return (
     <Container className="footer">
-      <p className="text-center">HOMALI @ All rights resrverd 2023</p>
+      <p className="text-center">© 2023 HoMaLi. All rights reserved.</p>
     </Container>
   );
 };
