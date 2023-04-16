@@ -73,8 +73,8 @@ const Signup = () => {
   };
 
   return (
-    <Container className="pt-5">
-      <h2 className="text-center">Sign Up to Socialize</h2>
+    <Container className="pt-5 signup">
+      <h2 className="text-center header">Sign Up to MemeJewles</h2>
       <Stack className="pt-5" gap={5} direction="horizontal">
         <Col>
           <Form className="mt-5" onSubmit={(e) => handleSubmit(e)}>
@@ -172,7 +172,6 @@ const Signup = () => {
           </Stack>
         </Col>
       </Stack>
-      <Footer />
     </Container>
   );
 };

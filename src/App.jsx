@@ -27,6 +27,7 @@ function App() {
         />
         {!user && <Route path="/login" element={<Login />} />}
       </Routes>
+      <Footer />
     </div>
   );
 }
