@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <Container className="footer">
-      <p className="text-center">© 2023 HoMaLi. All rights reserved.</p>
-    </Container>
+    <div className="footer d-flex justify-content-center align-items-center">
+      <p>© 2023 HoMaLi. All rights reserved.</p>
+    </div>
   );
 };
 

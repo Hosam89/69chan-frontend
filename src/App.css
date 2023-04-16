@@ -1,7 +1,7 @@
 .App {
   display: grid;
-  grid-template-columns: 250px repeat(5, 1fr);
-  grid-template-rows: 250px repeat(5, 1fr);
+  grid-template-columns: 250px repeat(4, 1fr) 80px;
+  grid-template-rows: 250px repeat(4, 1fr) 80px;
 }
 
 .navBar {
@@ -16,7 +16,7 @@
 
 .footer {
   grid-column: 1/7;
-  grid-row: 6/7;
+  grid-row: 5/7;
   margin-inline: center;
 }
 

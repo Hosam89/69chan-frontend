@@ -43,7 +43,7 @@ const Login = () => {
   };
   return (
     <Container className="mt-5 login">
-      <h2 className="header">Login to MemeJewels</h2>
+      <h2 className="header-login">Login to MemeJewels</h2>
       <Form onSubmit={(e) => handleLogIn(e)}>
         <Stack gap={2}>
           <Form.Group controlId="username">
@@ -68,7 +68,6 @@ const Login = () => {
         </Button>
       </Form>
       {err && <div>{err.message}</div>}
-      <Footer />
     </Container>
   );
 };
