@@ -5,7 +5,7 @@ import { AiFillFacebook } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
-import Footer from "../../components/Footer";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import "./Signup.css";
 
@@ -17,8 +17,13 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
+  //Error when the Picture is not valid
   const [profilePictureError, setProfilePictureError] = useState("");
   const [err, setErr] = useState("");
+
+  //state for the icons to hide and show password
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const navigate = useNavigate();
   const { postData, error } = useFetch(
     "http://localhost:3001/users/add",
@@ -106,23 +111,41 @@ const Signup = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group controlId="password">
+              <Form.Group controlId="password" id="password">
                 <Form.Label>Password:</Form.Label>
                 <Form.Control
                   placeholder="password"
-                  type="password"
+                  type={showPassword ? "password" : "text"}
                   required
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                {showPassword ? (
+                  <AiOutlineEye
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
+                ) : (
+                  <AiOutlineEyeInvisible
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
+                )}
               </Form.Group>
-              <Form.Group controlId="repeatpass">
+              <Form.Group controlId="repeatpass" id="repeatPassword">
                 <Form.Label>Repeat Password:</Form.Label>
                 <Form.Control
                   placeholder="Repeat Password"
-                  type="password"
+                  type={showRepeatPassword ? "password" : "text"}
                   required
                   onChange={(e) => setRepeatPassword(e.target.value)}
                 />
+                {showRepeatPassword ? (
+                  <AiOutlineEye
+                    onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+                  />
+                ) : (
+                  <AiOutlineEyeInvisible
+                    onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+                  />
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Photo:</Form.Label>

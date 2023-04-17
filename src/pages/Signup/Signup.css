@@ -42,3 +42,20 @@
 .github {
   background-color: #000000;
 }
+
+#password,
+#repeatPassword {
+  position: relative;
+}
+
+#password svg {
+  position: absolute;
+  right: 10px;
+  top: 66%;
+}
+
+#repeatPassword svg {
+  position: absolute;
+  right: 10px;
+  top: 66%;
+}

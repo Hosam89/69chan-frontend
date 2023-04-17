@@ -1,11 +1,10 @@
 import React from "react";
 import { Button, Container, Form, Stack } from "react-bootstrap";
-import { useFetch } from "../../hooks/useFetch";
 import { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import Footer from "../../components/Footer";
-import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
+
 const Login = () => {
   const { dispatch } = useAuthContext();
   const [email, setEmail] = useState("");
