@@ -119,7 +119,15 @@ const Signup = () => {
                   required
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <AiOutlineEye onClick={() => setShowPassword(!showPassword)} />
+                {showPassword ? (
+                  <AiOutlineEye
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
+                ) : (
+                  <AiOutlineEyeInvisible
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
+                )}
               </Form.Group>
               <Form.Group controlId="repeatpass" id="repeatPassword">
                 <Form.Label>Repeat Password:</Form.Label>
@@ -129,9 +137,15 @@ const Signup = () => {
                   required
                   onChange={(e) => setRepeatPassword(e.target.value)}
                 />
-                <AiOutlineEye
-                  onClick={() => setShowRepeatPassword(!showRepeatPassword)}
-                />
+                {showRepeatPassword ? (
+                  <AiOutlineEye
+                    onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+                  />
+                ) : (
+                  <AiOutlineEyeInvisible
+                    onClick={() => setShowRepeatPassword(!showRepeatPassword)}
+                  />
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Photo:</Form.Label>
