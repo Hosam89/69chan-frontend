@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Home, Login, Post, Signup } from "./pages/index";
+import { CreatePost, Home, Login, Post, Signup } from "./pages/index";
 import { Footer, Navbar } from "./components/index";
 import { useAuthContext } from "./hooks/useAuthContext";
 
@@ -23,8 +23,13 @@ function App() {
 
         <Route
           path="/signup"
-          element={!user ? <Signup /> : <Navigate to="/" />}
+          element={!user ? <Signup /> : <Navigate to="/login" />}
         />
+        <Route
+          path="/addpost"
+          element={user ? <CreatePost /> : <Navigate to="/login" />}
+        />
+        <Route path="/*" element={<Home />} />
         {!user && <Route path="/login" element={<Login />} />}
       </Routes>
       {/* <Footer /> */}

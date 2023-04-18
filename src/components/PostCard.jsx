@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const PostCard = ({ imageUrl, title, description, postId }) => {
   return (
-    <Card style={{ width: "30rem" }} className="postContainer">
+    <Card style={{ width: "30rem" }} className="postContainer mb-2">
       <Card.Img variant="top" src={imageUrl} />
 
       <Card.Body>

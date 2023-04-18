@@ -41,6 +41,7 @@ function Navbar() {
             <Link to={"/"}>My Posts</Link>
             <Link to={"/"}>Friend</Link>
             <Link to={"/"}>For You</Link>
+            <Link to={"/addpost"}>Create Your Own</Link>
           </Stack>
         </>
       )}
