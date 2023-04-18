@@ -1,0 +1,13 @@
+.postPreview img {
+  width: 450px;
+  height: 300px;
+}
+
+.postPreview ul {
+  list-style-type: none;
+}
+
+.postPreview ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
