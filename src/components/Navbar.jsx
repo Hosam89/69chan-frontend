@@ -38,7 +38,7 @@ function Navbar() {
             className="align-items-center justify-content-center"
           >
             <Link to={"/"}>Feed</Link>
-            <Link to={"/"}>My Posts</Link>
+            <Link to={`/userpost/${user._id}`}>My Posts</Link>
             <Link to={"/"}>Friend</Link>
             <Link to={"/"}>For You</Link>
             <Link to={"/addpost"}>Create Your Own</Link>
