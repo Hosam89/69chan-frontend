@@ -1,5 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { CreatePost, Home, Login, Post, Signup } from "./pages/index";
+import {
+  CreatePost,
+  Home,
+  Login,
+  Post,
+  Signup,
+  UserPosts,
+} from "./pages/index";
 import { Footer, Navbar } from "./components/index";
 import { useAuthContext } from "./hooks/useAuthContext";
 
@@ -28,6 +35,10 @@ function App() {
         <Route
           path="/addpost"
           element={user ? <CreatePost /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/userpost/:id"
+          element={user ? <UserPosts /> : <Navigate to="/login" />}
         />
         <Route path="/*" element={<Home />} />
         {!user && <Route path="/login" element={<Login />} />}
