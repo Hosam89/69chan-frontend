@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Form, Stack } from "react-bootstrap";
 import { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -66,6 +66,9 @@ const Login = () => {
           Login
         </Button>
       </Form>
+      <span>
+        you don't have an Account with us ? <Link to="/signup">Signup</Link>
+      </span>
       {err && <div>{err.message}</div>}
     </Container>
   );

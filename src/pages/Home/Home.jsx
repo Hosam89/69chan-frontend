@@ -6,21 +6,25 @@ const Home = () => {
   const [post, setPost] = useState(null);
   setTimeout(() => {
     setPost(data);
-    console.log(data);
   }, 1000);
+
   return (
     <div className="homeContainer mt-5">
       <h4 className="text-center">New Posts</h4>
       {post &&
-        post?.map((post) => (
-          <PostCard
-            imageUrl={post.mediaUrl}
-            title={post.title}
-            description={post.description}
-            postId={post._id}
-            key={post._id}
-          />
-        ))}
+        post
+          ?.map((post) => (
+            <PostCard
+              imageUrl={post.mediaUrl}
+              title={post.title}
+              description={post.description}
+              postId={post._id}
+              key={post._id}
+              userName={post.userName}
+              userId={post.user}
+            />
+          ))
+          .reverse()}
       {isPending && <div>Loading...</div>}
       {error && <div>{error}</div>}
     </div>

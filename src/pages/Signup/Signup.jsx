@@ -22,7 +22,7 @@ const Signup = () => {
   const [err, setErr] = useState("");
 
   //state for the icons to hide and show password
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const navigate = useNavigate();
   const { postData, error } = useFetch(

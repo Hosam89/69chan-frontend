@@ -12,7 +12,7 @@ const UserPosts = () => {
     `http://localhost:3001/posts/userPost/${id}`
   );
   const [show, setShow] = useState([]);
-  console.log(data);
+
   setTimeout(() => {
     setShow(data);
   }, 1000);
