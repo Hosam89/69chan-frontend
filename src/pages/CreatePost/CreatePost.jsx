@@ -47,6 +47,7 @@ const CreatePost = () => {
       mediaUrl,
       tags,
       user: user._id,
+      userName: user.name,
     };
     if (tags.length <= 3) {
       postData(post);

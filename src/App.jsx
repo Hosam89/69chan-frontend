@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import {
   CreatePost,
+  EditPost,
   Home,
   Login,
   Post,
@@ -39,6 +40,10 @@ function App() {
         <Route
           path="/userpost/:id"
           element={user ? <UserPosts /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/editpost/:id"
+          element={user ? <EditPost /> : <Navigate to="/login" />}
         />
         <Route path="/*" element={<Home />} />
         {!user && <Route path="/login" element={<Login />} />}
