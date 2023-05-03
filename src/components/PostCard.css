@@ -1,9 +1,10 @@
 .postContainer {
-  margin-inline: auto;
   position: relative;
 }
 
 .postContainer .userName {
   position: absolute;
   top: 125px;
+  z-index: 4;
+  color: white;
 }

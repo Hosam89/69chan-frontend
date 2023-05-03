@@ -10,12 +10,10 @@ const PostCard = ({
   description,
   postId,
   userName,
-
   userId,
 }) => {
-  const { user } = useAuthContext();
   return (
-    <Card style={{ width: "30rem" }} className="postContainer mb-2">
+    <Card className="postContainer mb-2 col-lg-3 ">
       <Card.Img variant="top" src={imageUrl} />
 
       <Card.Body>
@@ -26,19 +24,6 @@ const PostCard = ({
         <Link to={`/post/${postId}`}>
           <Button variant="primary">see More</Button>
         </Link>
-
-        {user._id === userId ? (
-          <>
-            <Link to={`/editpost/${postId}`}>
-              <Button variant="success" className="ms-2">
-                {" "}
-                Edit Post
-              </Button>
-            </Link>
-          </>
-        ) : (
-          ""
-        )}
       </Card.Body>
     </Card>
   );

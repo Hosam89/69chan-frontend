@@ -41,10 +41,10 @@ function App() {
           path="/userpost/:id"
           element={user ? <UserPosts /> : <Navigate to="/login" />}
         />
-        <Route
+        {/* <Route
           path="/editpost/:id"
           element={user ? <EditPost /> : <Navigate to="/login" />}
-        />
+        /> */}
         <Route path="/*" element={<Home />} />
         {!user && <Route path="/login" element={<Login />} />}
       </Routes>
