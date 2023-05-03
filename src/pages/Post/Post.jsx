@@ -1,10 +1,10 @@
 // Import required packages and modules
-import { Link, useParams } from "react-router-dom"; // For creating links and getting URL parameters
+import { useNavigate, useParams } from "react-router-dom"; // For creating links and getting URL parameters
 import { useFetch } from "../../hooks/useFetch"; // Custom hook for fetching data
 import imgPlaceHolder from "../../assets/no_image_placeholder.png"; // Default image to display if post has no image
 import { useState } from "react"; // For using state in the component
 import { Alert, Button } from "react-bootstrap"; // Bootstrap components for displaying alerts and buttons
-import { DeletModel } from "../../components/index"; // Component for confirming deletion
+import { DeletModel, EditModel } from "../../components/index"; // Component for confirming deletion
 import { useAuthContext } from "../../hooks/useAuthContext"; // Custom hook for getting user information from context
 
 // Define Post component
@@ -22,6 +22,9 @@ const Post = () => {
   // Use state to display any errors that occur during post deletion
   const [deleteError, setDeleteError] = useState();
   // Use setTimeout to delay displaying post details until fetch is complete
+
+  const navigate = useNavigate();
+
   setTimeout(() => {
     setShow(true);
   }, 500);
@@ -32,6 +35,9 @@ const Post = () => {
       const response = await fetch(`http://localhost:3001/posts/delete/${id}`, {
         method: "DELETE",
       });
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
     } catch (err) {
       // If there is an error during deletion, display the error message
       setDeleteError(err);
@@ -58,13 +64,15 @@ const Post = () => {
               >
                 Delete Post
               </Button>
-              {/* Link to edit post page */}
+              {/* Link to edit post page
               <Link to={`/editpost/:${data[0]._id}`}>
                 <Button variant="success" className="ms-2">
                   {" "}
                   Edit Post
                 </Button>
-              </Link>
+              </Link> */}
+
+              <EditModel id={id} />
             </>
           ) : (
             // If user is not the author, do not display any buttons
