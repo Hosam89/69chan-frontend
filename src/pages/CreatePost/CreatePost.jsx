@@ -49,7 +49,7 @@ const CreatePost = () => {
       user: user._id,
       userName: user.name,
     };
-    if (tags.length <= 3) {
+    if (tags.length <= 3 && !setPostPhotoError) {
       postData(post);
       setTimeout(() => {
         navigate("/");

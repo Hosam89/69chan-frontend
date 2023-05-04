@@ -87,7 +87,7 @@ const Post = () => {
         </>
       )}
       {/* Display any errors that occur during post deletion */}
-      <Alert variant="danger">{error || deleteError}</Alert>
+      {error && <Alert variant="danger">{error || deleteError}</Alert>}
     </div>
   );
 };
