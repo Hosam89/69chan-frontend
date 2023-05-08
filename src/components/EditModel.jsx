@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Modal, Stack } from "react-bootstrap";
 
 import { useFetch } from "../hooks/useFetch";
-import { User } from "realm-web";
+
 import { useNavigate } from "react-router-dom";
 
 function EditModel({ id }) {

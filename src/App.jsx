@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from 'react-router-dom'
 import {
   CreatePost,
   EditPost,
@@ -7,50 +7,51 @@ import {
   Post,
   Signup,
   UserPosts,
-} from "./pages/index";
-import { Footer, Navbar } from "./components/index";
-import { useAuthContext } from "./hooks/useAuthContext";
+} from './pages/index'
+import { Footer, Navbar } from './components/index'
+import { useAuthContext } from './hooks/useAuthContext'
 
-import "./App.css";
-import "./bootstrap.min.css";
+import './App.css'
+import './bootstrap.min.css'
+import 'react-toastify/dist/ReactToastify.css'
 function App() {
-  const { user } = useAuthContext();
+  const { user } = useAuthContext()
 
   return (
-    <div className="App">
+    <div className='App'>
       {user && <Navbar />}
       <Routes>
         <Route
-          path="/"
-          element={user ? <Home /> : <Navigate to={"/login"} />}
+          path='/'
+          element={user ? <Home /> : <Navigate to={'/login'} />}
         />
         <Route
-          path="/post/:id"
-          element={user ? <Post /> : <Navigate to={"/login"} />}
+          path='/post/:id'
+          element={user ? <Post /> : <Navigate to={'/login'} />}
         />
 
         <Route
-          path="/signup"
-          element={!user ? <Signup /> : <Navigate to="/login" />}
+          path='/signup'
+          element={!user ? <Signup /> : <Navigate to='/login' />}
         />
         <Route
-          path="/addpost"
-          element={user ? <CreatePost /> : <Navigate to="/login" />}
+          path='/addpost'
+          element={user ? <CreatePost /> : <Navigate to='/login' />}
         />
         <Route
-          path="/userpost/:id"
-          element={user ? <UserPosts /> : <Navigate to="/login" />}
+          path='/userpost/:id'
+          element={user ? <UserPosts /> : <Navigate to='/login' />}
         />
         {/* <Route
           path="/editpost/:id"
           element={user ? <EditPost /> : <Navigate to="/login" />}
         /> */}
-        <Route path="/*" element={<Home />} />
-        {!user && <Route path="/login" element={<Login />} />}
+        <Route path='/*' element={<Home />} />
+        {!user && <Route path='/login' element={<Login />} />}
       </Routes>
       {/* <Footer /> */}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
