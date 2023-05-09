@@ -172,7 +172,7 @@ const Signup = () => {
                   Signup
                 </Button>
                 <Link to="/login">
-                  <Button variant=" btn btn-success">Go to Login</Button>
+                  <Button variant=" btn btn-success">Login</Button>
                 </Link>
               </Stack>
             </Form>

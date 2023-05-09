@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const PostCard = ({ imageUrl, title, description, postId, tags }) => {
   return (
-    <Card className="postContainer mb-2 col-lg-3 ">
+    <Card className="postContainer mb-2 col-lg-3 col-xl-4 ">
       <Card.Img variant="top" src={imageUrl} />
 
       <Card.Body>
@@ -21,10 +21,10 @@ const PostCard = ({ imageUrl, title, description, postId, tags }) => {
                 .map((tag) => <span className="ms-1">#{tag}</span>)}
           </p>
         </Card.Text>
-        <Link to={`/post/${postId}`}>
-          <Button variant="primary">see More</Button>
-        </Link>
       </Card.Body>
+      <Link className="button-body" to={`/post/${postId}`}>
+        <Button variant="primary">see More</Button>
+      </Link>
     </Card>
   );
 };
