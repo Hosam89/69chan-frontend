@@ -18,7 +18,7 @@ const PostCard = ({ imageUrl, title, description, postId, tags }) => {
             {tags &&
               tags[0]
                 ?.split(',')
-                .map((tag) => <span className='ms-2'>#{tag}</span>)}
+                .map((tag) => <span className='ms-1'>#{tag}</span>)}
           </p>
         </Card.Text>
         <Link to={`/post/${postId}`}>
