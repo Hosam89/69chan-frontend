@@ -14,6 +14,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import "./App.css";
 import "./bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   const { user } = useAuthContext();
 

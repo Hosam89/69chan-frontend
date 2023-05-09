@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div className="homeContainer mt-5">
       <h1 className="text-center">Your Feed</h1>
-      <div className=" d-flex flex-wrap gap-3 justify-content-center">
+      <div className=" d-flex flex-wrap gap-3  justify-content-center">
         {post &&
           post
             ?.map((post) => (

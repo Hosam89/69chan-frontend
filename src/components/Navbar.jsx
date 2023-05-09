@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Stack } from "react-bootstrap";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 import "./Navbar.css";
 
@@ -25,7 +26,7 @@ function Navbar() {
             {drop && (
               <div className="userDropDown">
                 <ul>
-                  <li>My Profile</li>
+                  <li>Profile</li>
                   <li>Settings</li>
                   <li onClick={() => handleLogOut()}>Log Out</li>
                 </ul>
@@ -46,6 +47,7 @@ function Navbar() {
           </Stack>
         </>
       )}
+      <Footer />
     </div>
   );
 }
