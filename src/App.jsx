@@ -49,7 +49,7 @@ function App() {
         <Route path="/*" element={<Home />} />
         {!user && <Route path="/login" element={<Login />} />}
       </Routes>
-      {<Footer />}
+      {/* {<Footer />} */}
     </div>
   );
 }

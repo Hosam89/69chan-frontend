@@ -105,6 +105,7 @@ body {
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
+  height: 100vh;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
@@ -4089,6 +4090,8 @@ fieldset:disabled .btn {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  width: 250px;
+
   height: var(--bs-card-height);
   word-wrap: break-word;
   background-color: var(--bs-card-bg);
@@ -4183,8 +4186,9 @@ fieldset:disabled .btn {
 .card-img,
 .card-img-bottom,
 .card-img-top {
-  height: 250px;
   width: 100%;
+
+  aspect-ratio: 1;
 }
 .card-img,
 .card-img-top {
@@ -10455,9 +10459,9 @@ fieldset:disabled .btn {
 }
 body {
   background-image: url("./assets/synthBG.png");
-
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 
   text-shadow: 0 0 1px rgba(50, 251, 226, 0.3), 0 0 2px rgba(50, 251, 226, 0.3),
     0 0 5px rgba(50, 251, 226, 0.2);

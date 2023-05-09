@@ -1,10 +1,3 @@
-#root {
-  background: transparent;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-
-  border-radius: 10px;
-}
-
 .signup {
   height: 100vh;
 }
@@ -21,20 +14,11 @@
 }
 
 .autosingup .btn:hover {
-  background-color: white;
-  color: black;
-}
-
-.google {
-  background-color: #ff0000;
-}
-
-.facebook {
-  background-color: #4267b2;
-}
-
-.github {
-  background-color: #000000;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border-radius: 10px;
 }
 
 #password,
