@@ -13,7 +13,7 @@ const PostCard = ({
   userId,
 }) => {
   return (
-    <Card className='postContainer mb-3 col-lg-3 '>
+    <Card className='postContainer mb-2 col-lg-3 '>
       <Card.Img variant='top' src={imageUrl} />
 
       <Card.Body>
