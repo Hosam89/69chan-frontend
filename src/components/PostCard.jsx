@@ -1,8 +1,8 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button } from 'react-bootstrap'
 
-import "./PostCard.css";
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+import './PostCard.css'
+import { Link } from 'react-router-dom'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const PostCard = ({
   imageUrl,
@@ -13,8 +13,8 @@ const PostCard = ({
   userId,
 }) => {
   return (
-    <Card className="postContainer mb-2 col-lg-3 ">
-      <Card.Img variant="top" src={imageUrl} />
+    <Card className='postContainer mb-1 col-lg-3 '>
+      <Card.Img variant='top' src={imageUrl} />
 
       <Card.Body>
         <Card.Title>
@@ -22,11 +22,11 @@ const PostCard = ({
         </Card.Title>
         <Card.Text>{description}</Card.Text>
         <Link to={`/post/${postId}`}>
-          <Button variant="primary">see More</Button>
+          <Button variant='primary'>see More</Button>
         </Link>
       </Card.Body>
     </Card>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostCard
