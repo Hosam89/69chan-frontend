@@ -85,7 +85,9 @@ const Signup = () => {
   return (
     <>
       <Container className="pt-5 signup">
-        <h2 className="text-center header">Sign Up to NeonNet</h2>
+        <h2 className="text-center header">
+          NeonNet: Where Retro Meets Digital!
+        </h2>
         <Stack className="pt-5" gap={5} direction="horizontal">
           <Col>
             <Form className="mt-5" onSubmit={(e) => handleSubmit(e)}>

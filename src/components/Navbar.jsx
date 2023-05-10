@@ -17,7 +17,10 @@ function Navbar() {
   };
 
   return (
-    <div className="navBar d-flex flex-column justify-content-evenly ">
+    <div
+      className="navBar d-flex flex-column justify-content-evenly p-3 "
+      sticky="top"
+    >
       {user && (
         <>
           <div className="userContainer mt-3" onClick={() => setDrop(!drop)}>
