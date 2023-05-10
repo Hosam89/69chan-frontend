@@ -1,27 +1,27 @@
-import { useEffect } from "react";
-import { PostCard } from "../../components/index";
-import { useFetch } from "../../hooks/useFetch";
-import { useState } from "react";
+import { useEffect } from 'react'
+import { PostCard } from '../../components/index'
+import { useFetch } from '../../hooks/useFetch'
+import { useState } from 'react'
 
-import "./Home.css";
+import './Home.css'
 
 const Home = () => {
-  const { data, isPending, error } = useFetch("http://localhost:3001/posts");
-  const [post, setPost] = useState([]);
+  const { data, isPending, error } = useFetch('http://localhost:3001/posts')
+  const [post, setPost] = useState([])
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setPost(data);
-    }, 500);
+      setPost(data)
+    }, 500)
 
     // Clear the timeout when the component unmounts or when the data changes.
-    return () => clearTimeout(timeoutId);
-  }, [data]);
+    return () => clearTimeout(timeoutId)
+  }, [data])
 
   return (
-    <div className="homeContainer mt-5">
-      <h1 className="text-center">Your Feed</h1>
-      <div className=" d-flex flex-wrap gap-3  justify-content-center">
+    <div className='homeContainer mt-5'>
+      <h1 className='text-center'>Your Feed</h1>
+      <div className=' d-flex flex-wrap gap-3  justify-content-center'>
         {post &&
           post
             ?.map((post) => (
@@ -41,7 +41,7 @@ const Home = () => {
         {error && <div>{error}</div>}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
