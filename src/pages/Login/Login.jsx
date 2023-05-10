@@ -52,7 +52,9 @@ const Login = () => {
   return (
     <>
       <Container className='mt-5 login'>
-        <h2 className='header-login text-center header'>Login to NeonNet</h2>
+        <h2 className='header-login text-center header'>
+          NeonNet: Where Retro Meets Digital!
+        </h2>
         <Stack className='pt-5' gap={5} direction='horizontal'>
           <Col>
             <Form onSubmit={(e) => handleLogIn(e)}>
