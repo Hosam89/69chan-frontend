@@ -15,7 +15,7 @@ const CreatePost = () => {
   const [description, setDescription] = useState('')
   const [mediaUrl, setMediaUrl] = useState('')
   const [tags, setTags] = useState([])
-  console.log(tags)
+
   const [previewUrl, setPreviewUrl] = useState(null)
 
   //Tags Options
@@ -88,7 +88,7 @@ const CreatePost = () => {
       return
     }
     /** To check to file size */
-    if (selected.size > 900000) {
+    if (selected.size > 3000000) {
       generateError('Image file must be less than 100kb')
       return
     }
