@@ -1,0 +1,25 @@
+.showPostContainer {
+  width: 50vw;
+
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  border-radius: 10px;
+  margin-left: 15px;
+  padding: 25px;
+}
+
+.showPostContainer img {
+  -webkit-box-shadow: 10px 0px 38px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 0px 38px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 0px 38px 0px rgba(0, 0, 0, 0.75);
+}
+
+.text-container {
+  border: 3px solid rgba(255, 255, 255, 0.562);
+  padding: 5px;
+  margin-bottom: 5px;
+  word-break: break-all;
+  border-radius: 15px;
+}

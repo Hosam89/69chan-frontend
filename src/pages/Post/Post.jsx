@@ -7,6 +7,7 @@ import { Alert, Button } from "react-bootstrap"; // Bootstrap components for dis
 import { DeletModel, EditModel } from "../../components/index"; // Component for confirming deletion
 import { useAuthContext } from "../../hooks/useAuthContext"; // Custom hook for getting user information from context
 
+import "./Post.css";
 // Define Post component
 const Post = () => {
   // Get user information from context
@@ -45,16 +46,20 @@ const Post = () => {
   };
   // Render the component
   return (
-    <div className="homeContainer mt-4">
+    <div className="homeContainer showPostContainer ">
       {/* Display post details if show is true */}
       {show && (
         <>
-          <div className="text-center">
+          <div className="text-center container">
             {/* Display post image, or default image if post has no image */}
-            <img src={data[0] ? data[0]?.mediaUrl : imgPlaceHolder} alt="" />
+            <img
+              src={data[0] ? data[0]?.mediaUrl : imgPlaceHolder}
+              alt=""
+              style={{ width: "200px" }}
+            />
           </div>
-          <div className="mt-3">{data[0]?.title}</div>
-          <div className="mt-3">{data[0]?.description}</div>
+          <div className="mt-3 text-container">{data[0]?.title}</div>
+          <div className="mt-3 text-container">{data[0]?.description}</div>
           {/* Display Delete and Edit buttons if user is the author of the post */}
           {user._id === data[0].user ? (
             <>
