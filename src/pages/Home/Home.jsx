@@ -8,7 +8,20 @@ import './Home.css'
 const Home = () => {
   const { data, isPending, error } = useFetch('http://localhost:3001/posts')
   const [post, setPost] = useState([])
-
+  const updateLike = async (id, likes) => {
+    try {
+      const respones = await fetch(`http://localhost:3001/posts/patch/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ likes: likes + 1 }),
+      })
+      console.log('like response', respones)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setPost(data)
@@ -34,6 +47,7 @@ const Home = () => {
                 userName={post.userName}
                 userId={post.user}
                 tags={post.tags}
+                likeNumber={post.likes}
               />
             ))
             .reverse()}

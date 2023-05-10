@@ -1,9 +1,20 @@
-import { Card, Button } from 'react-bootstrap'
-
+import { Card, Button, Stack } from 'react-bootstrap'
 import './PostCard.css'
 import { Link } from 'react-router-dom'
+import LikeIcon from './LikeIcon'
+import { useState } from 'react'
 
-const PostCard = ({ imageUrl, title, description, postId, tags }) => {
+const PostCard = ({
+  imageUrl,
+  title,
+  description,
+  postId,
+  tags,
+  likeNumber,
+  updateLike,
+}) => {
+  const [like, setLike] = useState(false)
+
   return (
     <Card className='postContainer mb-2 '>
       <Card.Img variant='top' src={imageUrl} />
@@ -21,9 +32,22 @@ const PostCard = ({ imageUrl, title, description, postId, tags }) => {
           </p>
         </Card.Text>
       </Card.Body>
-      <Link className='button-body' to={`/post/${postId}`}>
-        <Button variant='primary'>see More</Button>
-      </Link>
+      <Stack
+        gap={2}
+        direction='horizontal'
+        className='button-body justify-content-between'
+      >
+        <Link to={`/post/${postId}`}>
+          <Button variant='primary'>see More</Button>
+        </Link>
+        <Stack gap={2} direction='horizontal'>
+          <span>{likeNumber}</span>{' '}
+          <span onClick={() => updateLike(postId, likeNumber)}>
+            <LikeIcon state={like} setState={setLike} likeNumber={likeNumber} />
+          </span>
+        </Stack>
+        {/* <button onClick={() => updateLike()}>like me</button> */}
+      </Stack>
     </Card>
   )
 }
