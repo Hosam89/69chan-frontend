@@ -7,7 +7,7 @@ const LikeIcon = ({ state, setState }) => {
       src={state ? likeIcon : unlikeIcon}
       alt=''
       style={{ width: '35px', aspectRatio: '1' }}
-      onClick={() => setState(!state)}
+      onClick={() => setState(true)}
     />
   )
 }

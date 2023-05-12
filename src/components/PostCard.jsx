@@ -3,6 +3,7 @@ import './PostCard.css'
 import { Link } from 'react-router-dom'
 import LikeIcon from './LikeIcon'
 import { useState } from 'react'
+import { isDisabled } from '@testing-library/user-event/dist/utils'
 
 const PostCard = ({
   imageUrl,
@@ -26,9 +27,11 @@ const PostCard = ({
           <p>{description}</p>{' '}
           <p>
             {tags &&
-              tags[0]
-                ?.split(',')
-                .map((tag) => <span className='ms-1'>#{tag}</span>)}
+              tags[0]?.split(',').map((tag) => (
+                <span className='ms-1' key={postId}>
+                  #{tag}
+                </span>
+              ))}
           </p>
         </Card.Text>
       </Card.Body>
@@ -42,11 +45,13 @@ const PostCard = ({
         </Link>
         <Stack gap={2} direction='horizontal'>
           <span>{likeNumber}</span>{' '}
-          <span onClick={() => updateLike(postId, likeNumber)}>
+          <button
+            onClick={() => updateLike(postId, likeNumber)}
+            disabled={like}
+          >
             <LikeIcon state={like} setState={setLike} likeNumber={likeNumber} />
-          </span>
+          </button>
         </Stack>
-        {/* <button onClick={() => updateLike()}>like me</button> */}
       </Stack>
     </Card>
   )
