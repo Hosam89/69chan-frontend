@@ -2,10 +2,12 @@ import { useEffect } from 'react'
 import { PostCard } from '../../components/index'
 import { useFetch } from '../../hooks/useFetch'
 import { useState } from 'react'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 import './Home.css'
 
 const Home = () => {
+  const { user } = useAuthContext()
   const { data, isPending, error } = useFetch('http://localhost:3001/posts')
   const [post, setPost] = useState([])
   const updateLike = async (id, likes) => {
@@ -15,7 +17,7 @@ const Home = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ likes: likes + 1 }),
+        body: JSON.stringify({ likes: user._id }),
       })
       console.log('like response', respones)
     } catch (error) {
@@ -47,7 +49,8 @@ const Home = () => {
                 userName={post.userName}
                 userId={post.user}
                 tags={post.tags}
-                likeNumber={post.likes}
+                likeNumber={post?.likes?.length}
+                updateLike={updateLike}
               />
             ))
             .reverse()}
