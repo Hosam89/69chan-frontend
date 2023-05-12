@@ -1,0 +1,76 @@
+.loading {
+  overflow: hidden;
+  background: transparent;
+}
+
+.scene {
+  position: relative;
+  left: 30%;
+  top: 30%;
+  width: 50%;
+  min-height: 50vh;
+}
+
+.flex {
+  position: relative;
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.sun-container {
+  position: relative;
+}
+
+.sun {
+  display: block;
+  position: relative;
+  transform: translateY(-20px);
+  width: 80vmin;
+  height: calc(80vmin + 40px);
+  animation: sun-move-down linear 2s infinite;
+  -webkit-mask-image: repeating-linear-gradient(
+    to bottom,
+    black 0 10px,
+    transparent 0 40px
+  );
+}
+
+.sun::before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(255, 255, 0) 20%,
+    rgb(240, 0, 190) 70%,
+    rgb(130, 255, 255)
+  );
+  animation: sun-move-up linear 2s infinite;
+  border-radius: 50%;
+}
+
+@keyframes sun-move-up {
+  from {
+    top: 40px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@keyframes sun-move-down {
+  from {
+    top: 0;
+  }
+  to {
+    top: 40px;
+  }
+}
