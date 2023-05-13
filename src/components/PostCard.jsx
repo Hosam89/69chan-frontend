@@ -1,9 +1,8 @@
-import { Card, Button, Stack } from 'react-bootstrap'
-import './PostCard.css'
-import { Link } from 'react-router-dom'
-import LikeIcon from './LikeIcon'
-import { useState } from 'react'
-import { isDisabled } from '@testing-library/user-event/dist/utils'
+import { Card, Button, Stack } from "react-bootstrap";
+import "./PostCard.css";
+import { Link } from "react-router-dom";
+import LikeIcon from "./LikeIcon";
+import { useState } from "react";
 
 const PostCard = ({
   imageUrl,
@@ -14,21 +13,28 @@ const PostCard = ({
   likeNumber,
   updateLike,
 }) => {
-  const [like, setLike] = useState(false)
+  const [like, setLike] = useState(false);
+
+  const truncateDescription = (desc, wordLimit) => {
+    const words = desc.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + "...";
+    }
+    return desc;
+  };
 
   return (
-    <Card className='postContainer mb-2 '>
-      <Card.Img variant='top' src={imageUrl} />
+    <Card className="postContainer mb-2 ">
+      <Card.Img variant="top" src={imageUrl} />
 
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>
-          {' '}
-          <p>{description}</p>{' '}
+          <p>{truncateDescription(description, 4)}</p>
           <p>
             {tags &&
-              tags[0]?.split(',').map((tag) => (
-                <span className='ms-1' key={postId}>
+              tags[0]?.split(",").map((tag) => (
+                <span className="ms-1" key={postId}>
                   #{tag}
                 </span>
               ))}
@@ -37,14 +43,14 @@ const PostCard = ({
       </Card.Body>
       <Stack
         gap={2}
-        direction='horizontal'
-        className='button-body justify-content-between'
+        direction="horizontal"
+        className="button-body justify-content-between"
       >
         <Link to={`/post/${postId}`}>
-          <Button variant='primary'>see More</Button>
+          <Button variant="primary">See More</Button>
         </Link>
-        <Stack gap={2} direction='horizontal'>
-          <span>{likeNumber}</span>{' '}
+        <Stack gap={2} direction="horizontal">
+          <span>{likeNumber}</span>
           <button
             onClick={() => updateLike(postId, likeNumber)}
             disabled={like}
@@ -54,7 +60,7 @@ const PostCard = ({
         </Stack>
       </Stack>
     </Card>
-  )
-}
+  );
+};
 
-export default PostCard
+export default PostCard;
