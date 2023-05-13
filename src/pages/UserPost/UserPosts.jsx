@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-
+import { Loader } from "../../components/index";
 import { useFetch } from "../../hooks/useFetch";
 import PostCard from "../../components/PostCard";
 import { useState } from "react";
@@ -17,17 +17,19 @@ const UserPosts = () => {
     setShow(data);
   }, 1000);
   return (
-    <div className="homeContainer">
-      <h3 className="text-center">{user.name} posts</h3>
-      {show &&
-        show?.map((post) => (
-          <PostCard
-            title={post.title}
-            description={post.description}
-            imageUrl={post.mediaUrl}
-            postId={post._id}
-          />
-        ))}
+    <div className="homeContainer ">
+      <h3 className="text-center mt-3">{user.name} posts</h3>
+      <div className="showPostContainer d-flex flex-wrap gap-3">
+        {show &&
+          show?.map((post) => (
+            <PostCard
+              title={post.title}
+              description={post.description}
+              imageUrl={post.mediaUrl}
+              postId={post._id}
+            />
+          ))}
+      </div>
     </div>
   );
 };
