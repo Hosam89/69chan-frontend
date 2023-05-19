@@ -25,3 +25,8 @@
   grid-column: 1/7;
   grid-row: 1/6;
 }
+
+.mobileView {
+  grid-column: 1/6;
+  grid-row: 1/6;
+}
