@@ -23,7 +23,7 @@ const PostCard = ({
     }
     return desc
   }
-  const size = useWindowSize()
+
   return (
     <Card className='postContainer mb-2 '>
       <Card.Img variant='top' src={imageUrl} />
@@ -34,7 +34,6 @@ const PostCard = ({
           <p>{truncateDescription(description, 4)}</p>
           <p>
             {tags &&
-              size.width < 551 &&
               tags[0]?.split(',').map((tag) => (
                 <span className='ms-1' key={postId}>
                   #{tag}
