@@ -6,7 +6,7 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { Loader } from '../../components/index'
 import './Home.css'
 import { useWindowSize } from '../../hooks/useWindowSize'
-import { Form } from 'react-bootstrap'
+import { ToastContainer, toast } from 'react-toastify'
 
 const Home = () => {
   const { user } = useAuthContext()
@@ -16,22 +16,12 @@ const Home = () => {
     search ? `/?tag=${search}` : ''
   }`
   const { data, isPending, error } = useFetch(fetchUrl)
-
+  const generateError = (err) =>
+    toast.error(err, {
+      position: 'top-center',
+    })
   const [post, setPost] = useState([])
-  const updateLike = async (id, likes) => {
-    try {
-      const respones = await fetch(`http://localhost:3001/posts/patch/${id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ likes: user._id }),
-      })
-      console.log('like response', respones)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setPost(data)
@@ -57,14 +47,15 @@ const Home = () => {
                 key={post._id}
                 userName={post.userName}
                 userId={post.user}
+                user={user.id}
                 tags={post.tags}
                 likeNumber={post?.likes?.length}
-                updateLike={updateLike}
+                // likePost={handleLike(post._id, user.id)}
               />
             ))
             .reverse()}
         {isPending && <Loader />}
-        {error && <div>{error}</div>}
+        <ToastContainer />
       </div>
     </div>
   )
