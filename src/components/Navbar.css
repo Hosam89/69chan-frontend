@@ -14,7 +14,7 @@
 
 .userContainer {
   position: relative;
-  margin-right: 30px;
+
   text-align: center;
 }
 
@@ -31,7 +31,7 @@
 
 .userDropDown {
   position: absolute;
-  left: 30px;
+  left: 25px;
   width: 150px;
   text-align: center;
 }
@@ -56,6 +56,21 @@
   border-radius: 10px;
 }
 
-.mobile {
+.navBar.mobile {
   transform: translateX(-250px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navBar.mobile-open {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.hamburgerIcon {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  margin: 10px;
+  cursor: pointer;
+  z-index: 1;
 }

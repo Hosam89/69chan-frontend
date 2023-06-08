@@ -18,7 +18,7 @@ const UserPosts = () => {
   }, 1000);
   return (
     <div className="homeContainer ">
-      <h3 className="text-center mt-3">{user.name} posts</h3>
+      <h3 className="text-center mt-3">{user.name}'s posts</h3>
       <div className="showPostContainer d-flex flex-wrap gap-3">
         {show &&
           show?.map((post) => (
