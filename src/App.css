@@ -27,6 +27,13 @@
 }
 
 .mobileView {
-  grid-column: 1/6;
+  grid-column: 2/6;
   grid-row: 1/6;
+  margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+  .App {
+    grid-template-columns: 185px repeat(4, 1fr) 80px;
+  }
 }

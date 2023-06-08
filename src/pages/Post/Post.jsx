@@ -53,16 +53,16 @@ const Post = () => {
           <div className="text-center container">
             {/* Display post image, or default image if post has no image */}
             <img
+              className="mobileViewImg"
               src={data[0] ? data[0]?.mediaUrl : imgPlaceHolder}
               alt=""
-              style={{ width: "200px" }}
             />
           </div>
           <div className="mt-3 text-container">{data[0]?.title}</div>
           <div className="mt-3 text-container">{data[0]?.description}</div>
           {/* Display Delete and Edit buttons if user is the author of the post */}
           {user._id === data[0].user ? (
-            <>
+            <div className="d-flex">
               <Button
                 variant="danger"
                 onClick={() => setDeletePost(!deletePost)}
@@ -78,7 +78,7 @@ const Post = () => {
               </Link> */}
 
               <EditModel id={id} />
-            </>
+            </div>
           ) : (
             // If user is not the author, do not display any buttons
             ""
