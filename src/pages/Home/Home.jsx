@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import { PostCard } from "../../components/index";
 import { useFetch } from "../../hooks/useFetch";
@@ -7,15 +6,15 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { Loader } from "../../components/index";
 import "./Home.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import { Form } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
 
+import { Form } from "react-bootstrap";
 
 const Home = () => {
   const { user } = useAuthContext();
   const size = useWindowSize();
   const [search, setSearch] = useState("");
   const fetchUrl = `http://localhost:3001/posts${
-
     search ? `/?tag=${search}` : ""
   }`;
   const { data, isPending, error } = useFetch(fetchUrl);
