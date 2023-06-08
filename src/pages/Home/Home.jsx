@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { PostCard } from "../../components/index";
 import { useFetch } from "../../hooks/useFetch";
@@ -8,11 +9,13 @@ import "./Home.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { Form } from "react-bootstrap";
 
+
 const Home = () => {
   const { user } = useAuthContext();
   const size = useWindowSize();
   const [search, setSearch] = useState("");
   const fetchUrl = `http://localhost:3001/posts${
+
     search ? `/?tag=${search}` : ""
   }`;
   const { data, isPending, error } = useFetch(fetchUrl);
@@ -32,6 +35,7 @@ const Home = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setPost(data);
@@ -61,14 +65,15 @@ const Home = () => {
                 key={post._id}
                 userName={post.userName}
                 userId={post.user}
+                user={user.id}
                 tags={post.tags}
                 likeNumber={post?.likes?.length}
-                updateLike={updateLike}
+                // likePost={handleLike(post._id, user.id)}
               />
             ))
             .reverse()}
         {isPending && <Loader />}
-        {error && <div>{error}</div>}
+        <ToastContainer />
       </div>
     </div>
   );

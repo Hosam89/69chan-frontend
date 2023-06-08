@@ -3,7 +3,7 @@ import './PostCard.css'
 import { Link } from 'react-router-dom'
 import LikeIcon from './LikeIcon'
 import { useState } from 'react'
-import { useWindowSize } from '../hooks/useWindowSize'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const PostCard = ({
   imageUrl,
@@ -12,10 +12,9 @@ const PostCard = ({
   postId,
   tags,
   likeNumber,
-  updateLike,
 }) => {
   const [like, setLike] = useState(false)
-
+  const { user } = useAuthContext()
   const truncateDescription = (desc, wordLimit) => {
     const words = desc.split(' ')
     if (words.length > wordLimit) {
@@ -23,7 +22,23 @@ const PostCard = ({
     }
     return desc
   }
-  const size = useWindowSize()
+
+  const handleLike = async (userId, postId) => {
+    try {
+      await fetch('http://localhost:3001/posts/like', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          postId,
+          userId,
+        }),
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <Card className='postContainer mb-2 '>
       <Card.Img variant='top' src={imageUrl} />
@@ -34,7 +49,6 @@ const PostCard = ({
           <p>{truncateDescription(description, 4)}</p>
           <p>
             {tags &&
-              size.width < 551 &&
               tags[0]?.split(',').map((tag) => (
                 <span className='ms-1' key={postId}>
                   #{tag}
@@ -53,10 +67,7 @@ const PostCard = ({
         </Link>
         <Stack gap={2} direction='horizontal'>
           <span>{likeNumber}</span>
-          <button
-            onClick={() => updateLike(postId, likeNumber)}
-            disabled={like}
-          >
+          <button onClick={() => handleLike(postId, user.id)} disabled={like}>
             <LikeIcon state={like} setState={setLike} likeNumber={likeNumber} />
           </button>
         </Stack>
